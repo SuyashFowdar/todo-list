@@ -6,7 +6,7 @@ function addProject(e) {
   const val = e.target.elements['project-name'].value;
   if (val) {
     projects[val] = [];
-    appendElement('li', 'project-list', val, [['style', 'cursor: pointer;']], (node) => {
+    appendElement('li', 'project-list', val, null, (node) => {
       node.addEventListener('click', () => { loadProject(val); });
     });
     localStorage.projects = JSON.stringify(projects);
