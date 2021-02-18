@@ -1,0 +1,41 @@
+form {
+  display: flex;
+  flex-direction: column;
+
+  &.todo-form {
+    align-items: center;
+
+    * {
+      width: 50%;
+      margin: 4px;
+    }
+  }
+}
+
+ul {
+  padding: 0;
+
+  li {
+    cursor: pointer;
+    padding: 8px;
+    list-style-type: none;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: lightgrey;
+    }
+  }
+}
+
+.container {
+  display: flex;
+
+  & > div {
+    width: 50%;
+    padding: 10px;
+
+    &:first-child {
+      border-right: 2px solid black;
+    }
+  }
+}
