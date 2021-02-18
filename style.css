@@ -1,0 +1,28 @@
+form {
+  display: flex;
+  flex-direction: column; }
+  form.todo-form {
+    align-items: center; }
+    form.todo-form * {
+      width: 50%;
+      margin: 4px; }
+
+ul {
+  padding: 0; }
+  ul li {
+    cursor: pointer;
+    padding: 8px;
+    list-style-type: none;
+    border-radius: 3px; }
+    ul li:hover {
+      background-color: lightgrey; }
+
+.container {
+  display: flex; }
+  .container > div {
+    width: 50%;
+    padding: 10px; }
+    .container > div:first-child {
+      border-right: 2px solid black; }
+
+/*# sourceMappingURL=style.css.map */
