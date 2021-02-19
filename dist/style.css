@@ -1,0 +1,82 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+form.todo-form {
+  align-items: center;
+}
+form.todo-form * {
+  width: 50%;
+  margin: 4px;
+}
+
+ul {
+  padding: 0;
+}
+ul li {
+  cursor: pointer;
+  padding: 8px;
+  list-style-type: none;
+  border-radius: 3px;
+  display: flex;
+}
+ul li:hover {
+  background-color: lightgrey;
+}
+ul li span {
+  width: 33%;
+}
+
+.container {
+  display: flex;
+  height: 80%;
+}
+.container > div {
+  padding: 25px;
+}
+.container > div:first-child {
+  width: 30%;
+  border-radius: 3px;
+  background-color: lightblue;
+}
+.container > div:last-child {
+  width: 50%;
+}
+.container > div:last-child > div {
+  display: flex;
+}
+.container > div:last-child > div b {
+  width: 33%;
+}
+
+input,
+button {
+  padding: 5px;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(100, 100, 100, 0.5);
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+  width: 100%;
+  padding: 20px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */
