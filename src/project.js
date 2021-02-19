@@ -12,7 +12,7 @@ const addProject = (e) => {
     localStorage.projects = JSON.stringify(projects);
     e.target.elements['project-name'].value = '';
   }
-}
+};
 
 const displayProjects = () => {
   el('h2', 'project-container', 'Project List');
@@ -28,6 +28,6 @@ const displayProjects = () => {
     node.addEventListener('submit', (e) => { addProject(e); });
   });
   el('input', 'new-project-form', null, [['type', 'text'], ['name', 'project-name'], ['placeholder', 'Type new project name and press Enter'], ['required', true]]);
-}
+};
 
 export { loadProject, displayProjects };

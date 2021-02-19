@@ -34,6 +34,11 @@ ul li span {
 .container > div {
   padding: 25px;
 }
+.container > div:first-child {
+  width: 30%;
+  border-radius: 3px;
+  background-color: lightblue;
+}
 .container > div:last-child {
   width: 50%;
 }
@@ -42,11 +47,6 @@ ul li span {
 }
 .container > div:last-child > div b {
   width: 33%;
-}
-.container > div:first-child {
-  width: 30%;
-  border-radius: 3px;
-  background-color: lightblue;
 }
 
 input,

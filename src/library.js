@@ -10,7 +10,7 @@ const el = (type, parent, content, attr, cb) => {
   if (cb) {
     cb(node);
   }
-}
+};
 
 const nodeEl = (node, content) => {
   const childNode = document.createElement(content[0]);
@@ -21,6 +21,6 @@ const nodeEl = (node, content) => {
     }
   }
   node.appendChild(childNode);
-}
+};
 
 export { el, nodeEl };

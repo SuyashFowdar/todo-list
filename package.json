@@ -1,7 +1,7 @@
 {
-  "name": "restaurant-page",
+  "name": "todo-list",
   "version": "1.0.0",
-  "description": "A simple JS Project for a Restaurant Page using Webpack",
+  "description": "A simple JS Project for a todo list using Webpack",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

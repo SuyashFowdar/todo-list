@@ -39,6 +39,12 @@ ul {
   & > div {
     padding: 25px;
 
+    &:first-child {
+      width: 30%;
+      border-radius: 3px;
+      background-color: lightblue;
+    }
+
     &:last-child {
       width: 50%;
 
@@ -49,12 +55,6 @@ ul {
           width: 33%;
         }
       }
-    }
-
-    &:first-child {
-      width: 30%;
-      border-radius: 3px;
-      background-color: lightblue;
     }
   }
 }

@@ -10,7 +10,7 @@ const loadProject = (project) => {
   document.getElementById('todo-container').innerHTML = '';
   // eslint-disable-next-line no-use-before-define
   displayTodo(project, projects[project]);
-}
+};
 
 class Todo {
   constructor(title, description, priority, date) {
@@ -40,14 +40,14 @@ const addTodo = (e, index) => {
     localStorage.projects = JSON.stringify(projects);
     loadProject(projectName);
   }
-}
+};
 
 const deleteTodo = (index) => {
   project.splice(index, 1);
   projects[projectName] = project;
   localStorage.projects = JSON.stringify(projects);
   loadProject(projectName);
-}
+};
 
 const loadTodoForm = (data, index) => {
   const form = document.getElementById('todo-form');
@@ -73,7 +73,7 @@ const loadTodoForm = (data, index) => {
       });
     }
   }
-}
+};
 
 const displayTodo = (name, list) => {
   project = list;
@@ -96,6 +96,6 @@ const displayTodo = (name, list) => {
   el('button', 'todo-container', 'New Todo', null, (node) => {
     node.addEventListener('click', () => { loadTodoForm(); });
   });
-}
+};
 
 export { loadProject, displayTodo, projects };
