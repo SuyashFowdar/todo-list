@@ -2,15 +2,8 @@ import { el, nodeEl } from './library';
 
 const projects = JSON.parse(localStorage.projects || '{ "Default": [] }');
 
-let project;
 let projectName;
 let formDisplay = false;
-
-const loadProject = (project) => {
-  document.getElementById('todo-container').innerHTML = '';
-  // eslint-disable-next-line no-use-before-define
-  displayTodo(project, projects[project]);
-};
 
 class Todo {
   constructor(title, description, priority, date) {
@@ -21,39 +14,47 @@ class Todo {
   }
 }
 
-const addTodo = (e, index) => {
+const addTodo = (val, index) => {
+  if (index || index === 0) {
+    projects[projectName][index] = val;
+  } else {
+    projects[projectName].push(val);
+  }
+};
+
+const submitTodoForm = (e, index) => {
   e.preventDefault();
   const { elements } = e.target;
-  const val = new Todo(
-    elements.title.value,
-    elements.description.value,
-    elements.priority.value,
-    elements.date.value,
-  );
   if (elements) {
-    if (index || index === 0) {
-      project[index] = val;
-    } else {
-      project.push(val);
-    }
-    projects[projectName] = project;
+    const val = new Todo(
+      elements.title.value,
+      elements.description.value,
+      elements.priority.value,
+      elements.date.value,
+    );
+    addTodo(val, index);
     localStorage.projects = JSON.stringify(projects);
-    loadProject(projectName);
+    // eslint-disable-next-line no-use-before-define
+    displayTodo(projectName);
   }
 };
 
 const deleteTodo = (index) => {
-  project.splice(index, 1);
-  projects[projectName] = project;
+  projects[projectName].splice(index, 1);
+};
+
+const deleteButton = (index) => {
+  deleteTodo(index);
   localStorage.projects = JSON.stringify(projects);
-  loadProject(projectName);
+  // eslint-disable-next-line no-use-before-define
+  displayTodo(projectName);
 };
 
 const loadTodoForm = (data, index) => {
   const form = document.getElementById('todo-form');
   if (form) form.remove();
   el('form', 'todo-container', null, [['id', 'todo-form'], ['class', 'todo-form']], (node) => {
-    node.addEventListener('submit', (e) => { addTodo(e, index); });
+    node.addEventListener('submit', (e) => { submitTodoForm(e, index); });
   });
   if (data) {
     formDisplay = true;
@@ -69,15 +70,19 @@ const loadTodoForm = (data, index) => {
     el('input', 'todo-form', null, [['type', 'submit'], ['value', data ? 'Update Todo' : 'Add Todo']]);
     if (data) {
       el('button', 'todo-form', 'Delete Todo Item', [['type', 'button']], (node) => {
-        node.addEventListener('click', () => { deleteTodo(index); });
+        node.addEventListener('click', () => { deleteButton(index); });
       });
     }
   }
 };
 
-const displayTodo = (name, list) => {
-  project = list;
+const setProject = (name) => {
   projectName = name;
+};
+
+const displayTodo = (name) => {
+  setProject(name);
+  document.getElementById('todo-container').innerHTML = '';
   el('h2', 'todo-container', projectName);
   el('div', 'todo-container', null, null, (node) => {
     nodeEl(node, ['b', 'Priority']);
@@ -85,12 +90,13 @@ const displayTodo = (name, list) => {
     nodeEl(node, ['b', 'Due Date']);
   });
   el('ul', 'todo-container', null, [['id', 'todo-list']]);
-  for (let i = 0; i < list.length; i += 1) {
+  for (let i = 0; i < projects[projectName].length; i += 1) {
+    const todo = projects[projectName][i];
     el('li', 'todo-list', null, null, (node) => {
-      nodeEl(node, ['span', list[i].priority]);
-      nodeEl(node, ['span', list[i].title]);
-      nodeEl(node, ['span', list[i].date]);
-      node.addEventListener('click', () => { loadTodoForm(list[i], i); });
+      nodeEl(node, ['span', todo.priority]);
+      nodeEl(node, ['span', todo.title]);
+      nodeEl(node, ['span', todo.date]);
+      node.addEventListener('click', () => { loadTodoForm(todo, i); });
     });
   }
   el('button', 'todo-container', 'New Todo', null, (node) => {
@@ -98,4 +104,6 @@ const displayTodo = (name, list) => {
   });
 };
 
-export { loadProject, displayTodo, projects };
+export {
+  displayTodo, projects, Todo, addTodo, setProject, deleteTodo,
+};
